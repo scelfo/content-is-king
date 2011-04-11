@@ -1,0 +1,16 @@
+{
+  "name": "Content is King",
+  "description": "Chrome extension to enhance content on a variety of websites.",
+  "version": "0.1",
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.tripadvisor.com/*"],
+      "js": ["tripadvisor.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

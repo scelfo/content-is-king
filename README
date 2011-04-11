@@ -1,1 +1,8 @@
 Chrome extension to enhance content on a variety of websites.
+
+TODO Items, contributions welcome at https://github.com/scelfo/content-is-king:
+  - Add a url bar notification that a page has been processed.
+  - Allow users to click the notification to temporarily disable processing.
+
+Supported websites and the date when they were first supported:
+04/11/11 - TripAdvisor (http://www.tripadvisor.com)
