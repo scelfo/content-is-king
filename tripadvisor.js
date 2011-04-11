@@ -11,7 +11,7 @@ var removeExtraElements = function() {
     footerPromo.parentNode.removeChild(footerPromo);
   }
 };
-removeExtraElements();
+
 
 // Add a click function on every html element so that script can fake a click.
 var clickOnMoreLinks = function() {
@@ -29,7 +29,7 @@ var clickOnMoreLinks = function() {
     }
   }
 };
-clickOnMoreLinks();
+
 
 // Resize some elements on the page.
 var resizePageElements = function() {
@@ -55,4 +55,13 @@ var resizePageElements = function() {
   styleNode.appendChild(document.createTextNode(newCss));
   document.getElementsByTagName('head')[0].appendChild(styleNode);
 };
-resizePageElements();
+
+var isSupportedPage = function() {
+  return document.URL.indexOf("Hotel_Review") != -1;
+};
+
+if (isSupportedPage()) {
+  removeExtraElements();
+  clickOnMoreLinks();
+  resizePageElements();
+}
