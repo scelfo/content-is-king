@@ -1,5 +1,1 @@
-- Adjust url pattern whitelist to only match pages that are known to work.
-- Move common utilities into a util.js file.
-- Namespace everything to avoid conflicts with site js, suggestion of tonyscelfo-cik as namespace.
-- Add a url bar notification that a page has been processed.
-- Allow users to click the notification to temporarily disable processing.
+Tasks are being tracked as issues on github at https://github.com/scelfo/content-is-king/issues
