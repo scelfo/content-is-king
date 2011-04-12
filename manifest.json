@@ -9,7 +9,13 @@
     {
       "matches": ["*://*.tripadvisor.com/*"],
       "js": ["tripadvisor.js"],
-      "run_at": "document_idle",
+      "run_at": "document_end",
+      "all_frames": true
+    },
+    {
+      "matches": ["*://*.jezebel.com/*"],
+      "js": ["jezebel.js"],
+      "run_at": "document_end",
       "all_frames": true
     }
   ]
