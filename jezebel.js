@@ -1,37 +1,19 @@
-// Remove some elements that distract from content.
-var removeExtraElements = function() {
-  var rightWrapper = document.getElementById('rightwrapper');
-  if (rightWrapper) {
-    rightWrapper.parentNode.removeChild(rightWrapper);
-  }
-};
+/**
+ * The unique namespace for all jezebel methods and internal state.
+ * @type {Object}
+ */
+contentIsKing.jezebel = {};
 
-
-// Add a click function on every html element so that script can fake a click.
-var clickOnMoreLinks = function() {
-  HTMLElement.prototype.click = function() {
-    var evt = this.ownerDocument.createEvent('MouseEvents');
-    evt.initMouseEvent('click', true, true, this.ownerDocument.defaultView,
-        1, 0, 0, 0, 0, false, false, false, false, 0, null);
-    this.dispatchEvent(evt);
-  };
-
-  var moreLinks = document.getElementsByClassName('moreLink');
-  if (moreLinks) {
-    for (var i = 0, l = moreLinks.length; i < l; i++) {
-      var cmd = moreLinks[i].click();
-    }
-  }
-};
-
-
-// Resize some elements on the page.
-var resizePageElements = function() {
+/**
+ * Custom resize logic for tripadvisor.
+ * @private
+ */
+contentIsKing.jezebel.resizePageElements_ = function() {
   var pageWidth = window.innerWidth - 300;
   var columnWidth = pageWidth - 20;
   var reviewWidth = columnWidth - 350;
 
-  var newCss = [
+  contentIsKing.injectCssIntoDom([
       // Keep sorted to help merge diffs.
       '#class_pager.gmgrid.grid-2 { width: 100%; }',
       '#class_pager.gmgrid.grid-full { width: 100%; }',
@@ -49,19 +31,21 @@ var resizePageElements = function() {
       '.thread { width: ' + columnWidth + 'px; padding-right: 20px; }',
       '.threadnav { width: 100%; }',
       '.threadnav.chrome.tc.cn_thread_firstpage { width: 100%; }'
-  ].join('');
-  var styleNode = document.createElement('style');
-  styleNode.type = 'text/css';
-  styleNode.appendChild(document.createTextNode(newCss));
-  document.getElementsByTagName('head')[0].appendChild(styleNode);
+  ].join(''));
 };
 
-var isSupportedPage = function() {
+
+/**
+ * @return {boolean} Whether the current url is a supported page.
+ */
+contentIsKing.jezebel.isSupportedPage_ = function() {
   return true;
 };
 
-if (isSupportedPage()) {
-  removeExtraElements();
-  clickOnMoreLinks();
-  resizePageElements();
+
+if (contentIsKing.jezebel.isSupportedPage_()) {
+  contentIsKing.hideExtraElements(
+      ['rightwrapper'],
+      null)
+  contentIsKing.jezebel.resizePageElements_();
 }

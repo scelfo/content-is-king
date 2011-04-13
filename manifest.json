@@ -8,13 +8,13 @@
   "content_scripts": [
     {
       "matches": ["*://*.tripadvisor.com/*"],
-      "js": ["tripadvisor.js"],
+      "js": ["common.js", "tripadvisor.js"],
       "run_at": "document_end",
       "all_frames": true
     },
     {
       "matches": ["*://*.jezebel.com/*"],
-      "js": ["jezebel.js"],
+      "js": ["common.js", "jezebel.js"],
       "run_at": "document_end",
       "all_frames": true
     }
